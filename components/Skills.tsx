@@ -35,7 +35,7 @@ const Skills = () => {
     >
       <div className={` sm:px-4 mx-auto `}>
         <Heading1 first="My" second="Skills" />
-        <div className="grid grid-cols-3  lg:grid-cols-4 gap-4 gap-y-6 place-items-center">
+        <div className="pt-4 grid grid-cols-3  lg:grid-cols-4 gap-4 gap-y-10 place-items-center">
           {skills.map((item, i) => (
             <AnimatedDiv
               variants={springAnimate100perFromBelow10}

@@ -14,7 +14,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body
         id="body"
-        className={`${font.className} max-w-[1536px] mx-auto !bg-[#fff0] `}
+        className={`${font.className} max-w-[1536px] mx-auto bg-black `}
       >
         <NextTopLoader color="#ff2424" />
         <Providers>

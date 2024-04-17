@@ -132,8 +132,6 @@ const Projects = () => {
         <section className="mb-20">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-10 py-4 place-content-center place-items-center">
             {projects.map((app, i) => (
-
-<div className="group relative w-[300px] min-h-[300px] bg-blue-500 flex justify-center items-center">   <h1 className="text-white font-semibold">hover on me</h1>   <div className="absolute top-0 left-0 right-0 w-full bg-black h-0 px-8 opacity-0 transition-all duration-1000 group-hover:opacity-100 group-hover:h-full group-hover:py-8 ">   {" "}   <div className="h-full">   {" "}   <p className="text-orange-500 text-lg">BRANDING</p>{" "}   <p className="text-3xl text-white font-medium tracking-wide">   {" "}   SEO Tracking <br /> Analysis{" "}   </p>   </div>   </div>   </div>
               <AnimatedDiv
                 variants={springAnimate70pxFromBelow10}
                 initial={"offscreen"}

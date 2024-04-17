@@ -4,10 +4,10 @@ import AnimatedDiv from "../AnimatedComponents/AnimatedDiv";
 export default function Header() {
   return (
     <section
-      id="Section"
-      className={` py-[35px] sm:py-[50px] sm:px-[15px] xl:px-[20px]`}
+      id="header"
+      className={` py-[35px] sm:py-[50px] sm:px-[15px] xl:px-[20px]  h-[400px] sm:min-h-screen`}
     >
-      <div className={` px-4 mx-auto `}>
+      <div className={` px-4 mx-auto   `}>
         <div className="grid sm:grid-cols-3">
           <AnimatedDiv
             variants={tweenAnimateFromLeft10}
