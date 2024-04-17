@@ -44,7 +44,7 @@ const AboutMe = () => {
               scalable web applications and working across the full-stack.I am
               looking to join forces with Web Development technologies to
               continue to grow my skill set while contributing to the positive
-              outcome of making people "richer,smarter, and happier."
+              outcome of making people &quot;richer,smarter, and happier.&quot;
             </AnimatedDiv>
             <AnimatedDiv
               variants={tweenAnimateFromRight10}

@@ -20,7 +20,7 @@ export default function Header() {
               Full Stack Developer
             </p>
             <h1 className="text-[30px] md:text-[50px] lg:text-[60px] text-white merriweather font-semibold">
-              Hi, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="text-[40px] lg:text-[60px] text-color1 merriweather font-semibold ">
                 Ramkumar
               </span>
