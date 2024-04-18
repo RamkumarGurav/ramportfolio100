@@ -21,14 +21,14 @@ const AboutMe = () => {
             initial={"offscreen"}
             whileInView={"onscreen"}
             viewport={{ once: true, amount: 0 }}
-            className=" sm:w-[900px] "
+            className=" sm:w-[900px] w-full flex justify-center items-center"
           >
             <Image
               src={img1}
               width={500}
               height={500}
               alt="photo"
-              className="shadow-md w-auto h-auto rounded-xl"
+              className="shadow-md w-[300px] h-auto rounded-xl"
             />
           </AnimatedDiv>
           <div className="">
