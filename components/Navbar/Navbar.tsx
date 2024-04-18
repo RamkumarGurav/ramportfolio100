@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <section
       id="navbar"
-      className="py-5 px-[2vmax] lg:px-[4vmax]   w-full bg-transparent  
+      className="py-5 px-[2vmax] lg:px-[4vmax]  bg-[#000000d0] w-full   
       
       sticky left-0 top-0 z-[9999]"
     >

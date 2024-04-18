@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Heading1 from "./Headings/Heading1";
 import AnimatedDiv from "./AnimatedComponents/AnimatedDiv";
+import img1 from "@/public/ram7.jpg";
 import {
   tweenAnimateFromLeft10,
   tweenAnimateFromRight10,
@@ -20,14 +21,14 @@ const AboutMe = () => {
             initial={"offscreen"}
             whileInView={"onscreen"}
             viewport={{ once: true, amount: 0 }}
-            className=" sm:w-[900px]"
+            className=" sm:w-[900px] "
           >
             <Image
-              src={"/ram-square-removebg-preview-2.png"}
+              src={img1}
               width={500}
               height={500}
               alt="photo"
-              className="shadow-md  rounded-md"
+              className="shadow-md w-auto h-auto rounded-xl"
             />
           </AnimatedDiv>
           <div className="">

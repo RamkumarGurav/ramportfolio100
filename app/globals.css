@@ -6,11 +6,33 @@
   --color1: #ff2424;
   --color2: #000;
   --color3: #fff;
-  --color4: #fff;
-  --color5: #fff;
-  --color6: #800080;
+  --color4: #007bff;
+  --color5: #343a40;
+  --color6: #6c757d;
   --color7: #fff;
   --color8: #800080;
+  --xblue: #007bff;
+  --xindigo: #6610f2;
+  --xpurple: #6f42c1;
+  --xpink: #e83e8c;
+  --xred: #dc3545;
+  --xorange: #fd7e14;
+  --xyellow: #ffc107;
+  --xgreen: #28a745;
+  --xteal: #20c997;
+  --xcyan: #17a2b8;
+  --xgray: #6c757d;
+  --xgraydark: #343a40;
+  --xprimary: #007bff;
+  --xsecondary: #6c757d;
+  --xsuccess: #28a745;
+  --xinfo: #17a2b8;
+  --xwarning: #ffc107;
+  --xdanger: #dc3545;
+  --xlight: #f8f9fa;
+  --xdark: #343a40;
+  --xgrayhover: #494e53;
+  --xgraynavtext: #c2c7c0;
 }
 
 /* //{--------------SHADOWS-------------- */
@@ -484,7 +506,7 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: right;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
 }
 
 /* 

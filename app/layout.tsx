@@ -14,9 +14,8 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body
         id="body"
-        className={`${font.className} max-w-[1536px] mx-auto bg-black `}
+        className={` ${font.className} max-w-[1536px] mx-auto bg-white `}
       >
-        <NextTopLoader color="#ff2424" />
         <Providers>
           <Toaster position="bottom-right" toastOptions={{ duration: 3000 }} />
           {children}

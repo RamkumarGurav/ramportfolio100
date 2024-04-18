@@ -12,7 +12,7 @@ import {
 const Services = () => {
   return (
     <section
-      id="Section"
+      id="services"
       className={` py-[35px] sm:py-[50px] sm:px-[35px] xl:px-[70px]`}
     >
       <div className={` px-4 mx-auto `}>

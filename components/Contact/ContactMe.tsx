@@ -83,7 +83,7 @@ const ContactMe = () => {
   };
   return (
     <section
-      id="contactme"
+      id="contact"
       className={` py-[35px] sm:py-[50px] md:px-[35px] xl:px-[70px] overflow-hidden`}
     >
       <div className={` px-4 mx-auto `}>
