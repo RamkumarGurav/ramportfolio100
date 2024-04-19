@@ -100,7 +100,7 @@ const Navbar1: React.FC = () => {
             {/* ======== LOGO =====*/}
             <Link
               href={"/"}
-              className={`LogoContainer ||| flex justify-center items-center ||| pb-2`}
+              className={`LogoContainer ||| flex justify-center items-center |||`}
             >
               <Image
                 src={Logo1}

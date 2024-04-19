@@ -23,7 +23,10 @@ const Services = () => {
               variants={tweenAnimateFromRight10}
               initial={"offscreen"}
               whileInView={"onscreen"}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.8 }}
               viewport={{ once: true, amount: 0 }}
+              className={``}
             >
               <FaCode size={35} color="white" className="mb-2" />
               <h1 className="text-white">Web Applications</h1>
@@ -36,6 +39,8 @@ const Services = () => {
               variants={tweenAnimateFromLeft10}
               initial={"offscreen"}
               whileInView={"onscreen"}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.8 }}
               viewport={{ once: true, amount: 0 }}
             >
               <SiZend size={35} color="white" className="mb-2" />

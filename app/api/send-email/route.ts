@@ -91,6 +91,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
       );
     }
   } catch (error) {
-    return errorHandler(error, req, res);
+    return errorHandler(error, req);
   }
 }

@@ -1,5 +1,6 @@
 import AboutMe from "@/components/AboutMe";
 import ContactMe from "@/components/Contact/ContactMe";
+import CircularMotion from "@/components/Header/CircularMotion";
 import Header from "@/components/Header/Header";
 import Navbar1 from "@/components/Navbar/Navbar1";
 import Projects from "@/components/Projects";
@@ -12,6 +13,7 @@ export default function PageName() {
     <div className={`bg-black`}>
       <Navbar1 />
       <Header />
+      {/* <CircularMotion /> */}
       <AboutMe />
       <Skills />
       <Services />
