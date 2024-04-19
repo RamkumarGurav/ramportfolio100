@@ -14,7 +14,7 @@ export default function Header() {
             initial={"offscreen"}
             whileInView={"onscreen"}
             viewport={{ once: true, amount: 0 }}
-            className="sm:px-10 pt-4 pt-16  sm:col-span-2"
+            className="sm:px-10  pt-20  sm:col-span-2"
           >
             <p className="text-[20px] md:text-[40px]  text-white  merriweather font-semibold">
               Full Stack Developer
