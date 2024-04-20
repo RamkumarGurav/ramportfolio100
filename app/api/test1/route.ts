@@ -1,19 +1,16 @@
 import { ApiError } from "next/dist/server/api-utils";
 import { NextRequest, NextResponse } from "next/server";
 import errorHandler from "../_utils/errorHandler";
+import { cookies } from "next/headers";
+import { logger } from "@/utils/logger";
 
-const sendData = async () => {
-  throw new ApiError(401, "Forbidden");
-};
-
-export async function GET(req: NextRequest, res: NextResponse) {
-  console.log(process.env.RECAPTCHA_SECRET_KEY2);
+export async function GET(req: NextRequest) {
   try {
-    // Example error handling
+    const expires = new Date(Date.now() + 120 * 1000);
+    const session = "ram";
 
-    // await sendData();
-    // throw new Error("generated error");
-
+    // Save the session in a cookie
+    cookies().set("session", session, { expires, httpOnly: true });
     return NextResponse.json(
       {
         status: true,
@@ -25,6 +22,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
       }
     );
   } catch (err) {
-    return errorHandler(err, req, res);
+    return errorHandler(err, req);
   }
 }

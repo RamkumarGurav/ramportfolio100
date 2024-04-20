@@ -1,13 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ApiError } from "next/dist/server/api-utils";
 
-export default function errorHandler(
-  error: any,
-  req: NextRequest,
-  res: NextResponse
-) {
+export default function errorHandler(error: any, req: NextRequest) {
   // console.error("Error in contact form API route:", error);
-
+  console.error(error);
   if (error instanceof ApiError) {
     // Handle API errors (e.g., validation errors)
     return NextResponse.json(

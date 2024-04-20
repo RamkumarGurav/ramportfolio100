@@ -103,7 +103,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className={` py-[35px] sm:py-[50px] sm:px-[35px] xl:px-[70px]`}
+      className={`relative z-10 py-[35px] sm:py-[50px] sm:px-[35px] xl:px-[70px] overflow-hidden`}
     >
       <div className={` px-4 mx-auto `}>
         <Heading1 first="My" second="Projects" />
@@ -136,9 +136,10 @@ const Projects = () => {
                 variants={springAnimate70pxFromBelow10}
                 initial={"offscreen"}
                 whileInView={"onscreen"}
+                whileHover={{ scale: 1.1 }}
                 viewport={{ once: true, amount: 0 }}
                 key={i}
-                className="card rounded-md  relative w-[300px] h-[300px] overflow-hidden"
+                className="z-[9999] card rounded-md  relative w-[300px] h-[300px] overflow-hidden"
               >
                 <Image
                   src={`${app.image}`}
@@ -150,7 +151,10 @@ const Projects = () => {
                   priority //When true, the image will be considered high priority and preload. Lazy loading is automatically disabled for images using priority.
                   className="rounded-md object-cover" //always give object-cover class to make image responsive without losing its aspects ratio( The image keeps its aspect ratio and fills the given dimension. The image will be clipped to fit)
                 />
-                <div className="absolute top-0 left-0 w-full h-full cgx-primary flex flex-col justify-center items-center gap-4 px-2">
+                <div
+                  className="absolute top-0 left-0  ||| cgx-primary  |||  w-full h-full  
+                |||  flex flex-col justify-center items-center gap-4 px-2"
+                >
                   <Link href={`${app.link}`} className="text-xl text-white ">
                     {app.name}
                   </Link>

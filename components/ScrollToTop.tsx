@@ -2,6 +2,9 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IoIosArrowDropupCircle } from "react-icons/io";
+import { MdOutlineArrowCircleUp } from "react-icons/md";
+import { BiSolidArrowToTop } from "react-icons/bi";
+import { LuArrowUpToLine } from "react-icons/lu";
 import { IoIosArrowUp } from "react-icons/io";
 export default function ScrollToTop() {
   const [showBtn, setShowBtn] = useState(false);
@@ -24,13 +27,21 @@ export default function ScrollToTop() {
   return (
     <>
       {showBtn && (
-        <Link
-          href="#body"
-          className={`fixed flex justify-center items-center bottom-9 lg:bottom-4 right-4 z-[99999] cursor-pointer
-           bg-red-500 rounded-full p-2`}
+        <div
+          className={`p-4  flex justify-center items-center  
+        ||| fixed bottom-2 lg:bottom-16 right-0 z-[99999] 
+         ||| cursor-pointer
+         `}
         >
-          <IoIosArrowUp className={`text-[20px] text-white `} />
-        </Link>
+          <Link
+            href="#body"
+            className={`  rounded-full bg-black/80 shadow shadow-white p-1`}
+          >
+            <BiSolidArrowToTop
+              className={`text-[25px] text-color1 hover:text-red-500 `}
+            />
+          </Link>
+        </div>
       )}
     </>
   );
