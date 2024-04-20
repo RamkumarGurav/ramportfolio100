@@ -8,11 +8,12 @@ import { IoLogoWebComponent } from "react-icons/io5";
 import { RiDashboard3Fill } from "react-icons/ri";
 import { AiFillProfile } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
-
+import { MdLogout } from "react-icons/md";
 import React, { useState, useEffect, useRef, MouseEvent } from "react";
-import VNavAccordianItem4 from "./VNavAccordianItem4";
+import VNavAccordianItem5 from "./VNavAccordianItem5";
 import { motion } from "framer-motion";
 import { Avatar, Button, Divider } from "@chakra-ui/react";
+
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 let navLinks = {
@@ -40,7 +41,7 @@ let navLinks = {
   },
 };
 
-export default function DashNavbar2({
+export default function DashNavbar3({
   children,
 }: {
   children: React.ReactNode;
@@ -140,38 +141,44 @@ export default function DashNavbar2({
 
   return (
     <div
-      className={`DASHBOARD_CONT  |||  flex  items-stretch  |||   |||  w-full  ||| bg-[#F4F6F9] `}
+      className={`DASH_LAYOUT  |||  flex  items-stretch  |||     w-full  ||| bg-xgraydark `}
     >
       <motion.div
-        initial={{ opacity: 1, minWidth: 0 }}
+        initial={{ opacity: 1, minWidth: "250px" }}
         animate={{ opacity: 1, minWidth: isSidebarOpen ? "250px" : "0" }}
         exit={{ opacity: 0.5, minWidth: 0 }}
         transition={{ type: "tween", duration: 0.4 }}
-        className={`SIDEBAR_CONT relative   ||| bg-xgraydark  ||| min-h-full   text-xlight    `}
+        style={{ backgroundColor: "black" }}
+        className={`DASH_LAYOUT_RIGHT  |||  relative z-[1]  |||   ||| min-h-full   text-xlight 
+        !bg-xgraydark   `}
       >
         <motion.div
-          initial={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 1, minWidth: "250px" }}
           animate={{ opacity: 1, x: !isSidebarOpen ? "-300px" : "0" }}
           exit={{ opacity: 0.5, x: 0 }}
           transition={{ type: "tween", duration: 0.4 }}
-          className={` z-[1000] ||| fixed  top-0   |||  overflow-y-auto |||  w-[250px] h-screen  |||
-          bg-xgraydark    ||| ${!isSidebarOpen && "hidden"} bg-xindigo `}
+          className={` z-[1]  ||| fixed  top-0   ||| overflow-y-auto no-scrollbar |||  w-[250px] h-screen  |||
+          bg-xgraydark    ||| ${!isSidebarOpen && "hidden"}  `}
         >
           <div
-            className="p-4 py-1 min-h-[57px]   ||| flex items-center gap-2 
-          |||  border-b border-b-gray-400
-           ||| font-semibold
+            className=" min-h-[57px] p-1  ||| sticky top-0  z-[2]  ||| bg-xgraydark   
           "
           >
-            <IoLogoWebComponent size={35} />
-            <p>PORTFOLIO </p>
+            <div
+              className={`p-4 py-1||| flex items-center gap-2 
+          ||| bg-purple-700 rounded-xl  border-b border-b-gray-700
+           ||| font-semibold`}
+            >
+              <IoLogoWebComponent size={35} />
+              <p>PORTFOLIO </p>
+            </div>
           </div>
-          <div className="p-4  ||| flex items-center gap-2  |||  border-b border-b-gray-400">
+          <div className="p-4  ||| flex items-center gap-2  |||  border-b border-b-gray-700">
             <MdAccountCircle size={35} />
             <p>Ramkumar</p>
           </div>
-          <div className={`sidebarShell  |||  p-4 px-2 |||  w-full  `}>
-            <VNavAccordianItem4
+          <div className={`SIDEBAR_MENU_CONT  |||  p-4 px-2 |||  w-full  `}>
+            <VNavAccordianItem5
               mainIcon={<RiDashboard3Fill size={20} />}
               subIcon={<FaRegCircle />}
               isAccordian={true}
@@ -181,7 +188,67 @@ export default function DashNavbar2({
               isOpen={activeNavLinkName === navLinks.dashboard.name}
               pathName={pathName}
             />
-            <VNavAccordianItem4
+            <VNavAccordianItem5
+              mainIcon={<AiFillProfile size={20} />}
+              subIcon={<FaRegCircle />}
+              isAccordian={true}
+              title={navLinks.bio.name}
+              subLinks={navLinks.bio.dropDown}
+              onClick={() => handlePanelClick(navLinks.bio.name)}
+              isOpen={activeNavLinkName === navLinks.bio.name}
+              pathName={pathName}
+            />
+            <VNavAccordianItem5
+              mainIcon={<AiFillProfile size={20} />}
+              subIcon={<FaRegCircle />}
+              isAccordian={true}
+              title={navLinks.bio.name}
+              subLinks={navLinks.bio.dropDown}
+              onClick={() => handlePanelClick(navLinks.bio.name)}
+              isOpen={activeNavLinkName === navLinks.bio.name}
+              pathName={pathName}
+            />
+            <VNavAccordianItem5
+              mainIcon={<AiFillProfile size={20} />}
+              subIcon={<FaRegCircle />}
+              isAccordian={true}
+              title={navLinks.bio.name}
+              subLinks={navLinks.bio.dropDown}
+              onClick={() => handlePanelClick(navLinks.bio.name)}
+              isOpen={activeNavLinkName === navLinks.bio.name}
+              pathName={pathName}
+            />
+            <VNavAccordianItem5
+              mainIcon={<AiFillProfile size={20} />}
+              subIcon={<FaRegCircle />}
+              isAccordian={true}
+              title={navLinks.bio.name}
+              subLinks={navLinks.bio.dropDown}
+              onClick={() => handlePanelClick(navLinks.bio.name)}
+              isOpen={activeNavLinkName === navLinks.bio.name}
+              pathName={pathName}
+            />
+            <VNavAccordianItem5
+              mainIcon={<AiFillProfile size={20} />}
+              subIcon={<FaRegCircle />}
+              isAccordian={true}
+              title={navLinks.bio.name}
+              subLinks={navLinks.bio.dropDown}
+              onClick={() => handlePanelClick(navLinks.bio.name)}
+              isOpen={activeNavLinkName === navLinks.bio.name}
+              pathName={pathName}
+            />
+            <VNavAccordianItem5
+              mainIcon={<AiFillProfile size={20} />}
+              subIcon={<FaRegCircle />}
+              isAccordian={true}
+              title={navLinks.bio.name}
+              subLinks={navLinks.bio.dropDown}
+              onClick={() => handlePanelClick(navLinks.bio.name)}
+              isOpen={activeNavLinkName === navLinks.bio.name}
+              pathName={pathName}
+            />
+            <VNavAccordianItem5
               mainIcon={<AiFillProfile size={20} />}
               subIcon={<FaRegCircle />}
               isAccordian={true}
@@ -194,10 +261,16 @@ export default function DashNavbar2({
           </div>
         </motion.div>
       </motion.div>
-      <div className={`MAIN min-h-[100vh] flex flex-col   grow`}>
-        <section className={`bg-[#fff] text-gray-900  ||| shadow   |||  `}>
+      <div
+        className={`DASH_LAYOUT_LEFT  ||| relattive  |||  bg-xgraywhite  |||  min-h-[100vh]  |||  flex flex-col grow
+        `}
+      >
+        <nav
+          className={`bg-[#fff] w-full text-gray-900   
+          ||| shadow   |||  sticky top-0  `}
+        >
           <div
-            className={`min-h-[57px] px-4 py-0 mx-auto ||| flex justify-between items-stretch `}
+            className={`min-h-[57px] px-4 py-0 w-full   ||| flex justify-between items-stretch `}
           >
             <div className="NAV_RIGHT flex items-center gap-8">
               {/* ======== HAM-BUTTOM =====*/}
@@ -210,8 +283,8 @@ export default function DashNavbar2({
               <Link href="/admin/dashboard">Contact</Link>
               {user ? (
                 <Button
-                  colorScheme="blue"
-                  className={`!bg-xblue !font-thin hover:!bg-blue-700`}
+                  variant="secondary"
+                  className={`!bg-xblue text-white !font-thin hover:!bg-blue-700`}
                   size="sm"
                   onClick={handleLogout}
                 >
@@ -219,19 +292,18 @@ export default function DashNavbar2({
                 </Button>
               ) : (
                 <Button
-                  colorScheme="blue"
-                  className={`!bg-xblue !font-thin hover:!bg-blue-700`}
+                  variant="secondary"
+                  className={`!bg-xblue text-white !font-thin hover:!bg-blue-700`}
                   size="sm"
                 >
                   <Link href="/login"> Login</Link>
                 </Button>
               )}
             </div>
-            <div className="NAV_RIGHT flex items-center gap-4"></div>
+            <div className="NAV_LEFT flex items-center gap-4">Hi!</div>
           </div>
-        </section>
-        <main>{children}</main>
-
+        </nav>
+        <main className={`p-1 sm:p-4`}>{children}</main>
         <footer className={` min-w-full  mt-auto`}>
           <FooterBottom />
         </footer>

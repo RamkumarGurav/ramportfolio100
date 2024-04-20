@@ -4,7 +4,7 @@
 
 :root {
   --color1: #ff2424;
-  --color2: #000;
+  --color2: #ffd30d;
   --color3: #fff;
   --color4: #007bff;
   --color5: #343a40;
@@ -12,7 +12,7 @@
   --color7: #fff;
   --color8: #800080;
   --xblue: #007bff;
-  --xindigo: #6610f2;
+  --xindigo: #323584;
   --xpurple: #6f42c1;
   --xpink: #e83e8c;
   --xred: #dc3545;
@@ -33,6 +33,7 @@
   --xdark: #343a40;
   --xgrayhover: #494e53;
   --xgraynavtext: #c2c7c0;
+  --xgraywhite: #f4f6f9;
 }
 
 /* //{--------------SHADOWS-------------- */
@@ -83,6 +84,18 @@
 .swiper,
 .swiper-slider {
   /* z-index: -99 !important; */
+}
+
+/* //{--------------NOSCROLLBAR-------------- */
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 /* //{--------------LOADIND  page-------------- */

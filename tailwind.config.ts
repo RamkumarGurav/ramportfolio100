@@ -28,6 +28,7 @@ const config: Config = {
         xcyan: "var(--xcyan)",
         xgray: "var(--xgray)",
         xgraydark: "var(--xgraydark)",
+        xgraywhite: "var(--xgraywhite)",
         xgrayhover: "var(--xgrayhover)",
         xdanger: "var(--xdanger)",
         xwarning: "var(--xwarning)",
