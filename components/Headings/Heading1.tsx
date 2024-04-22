@@ -2,7 +2,7 @@
 import {
   springAnimate70pxFromBelow,
   springAnimate70pxFromLeft,
-} from "@/utils/variants";
+} from "@/lib/frontend_lib/fm_variants/variants";
 import { motion } from "framer-motion";
 
 export default function PageName({
