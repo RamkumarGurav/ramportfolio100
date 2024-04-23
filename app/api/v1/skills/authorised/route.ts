@@ -1,27 +1,28 @@
 import connect from "@/app/api/_api_database/db";
 import errorHandler from "@/app/api/_api_lib/helpers/errorHandler";
-import Product from "@/app/api/_api_models/productModel";
+import Skill from "@/app/api/_api_models/skillModel";
 import { ApiError } from "next/dist/server/api-utils";
 import { type NextRequest, NextResponse } from "next/server";
 
 /* =======================================================================
-            CREATE PRODUCT
+            CREATE SKILL
    ======================================================================= */
 export async function POST(req: NextRequest) {
   try {
     await connect();
 
-    const { name, price, description, image, status } = await req.json();
-    let productBody = { name, price, description, image, status };
+    const { skillName, level, description, image, position, status } =
+      await req.json();
+    let skillBody = { skillName, level, description, image, position, status };
 
-    const product = new Product({ ...productBody });
-    const newProduct = await product.save();
-    if (!newProduct) {
-      throw new ApiError(500, "Error while creating new product");
+    const skill = new Skill({ ...skillBody });
+    const newSkill = await skill.save();
+    if (!newSkill) {
+      throw new ApiError(500, "Error while creating new skill");
     }
 
     return NextResponse.json(
-      { success: true, data: newProduct },
+      { success: true, data: newSkill },
       { status: 201 }
     );
   } catch (error) {
@@ -42,9 +43,9 @@ export async function GET(req: NextRequest) {
     const page = parseInt(searchParams.get("page") || "1", 10);
     const limit = parseInt(searchParams.get("limit") || "10", 10);
     const search = searchParams.get("search") || "";
-    const sortBy = searchParams.get("sortBy") || "createdAt";
+    const sortBy = searchParams.get("sortBy") || "position";
     // logger(sortBy);
-    const sortOrder = searchParams.get("sortOrder") || "desc";
+    const sortOrder = searchParams.get("sortOrder") || "asc";
     const status = searchParams.get("status") || "";
     // Construct the filter object based on the status parameter
     const filter = status ? { status } : {};
@@ -56,34 +57,35 @@ export async function GET(req: NextRequest) {
       ? { name: { $regex: new RegExp(search, "i") } } // Case-insensitive search
       : {};
 
-    // Find products based on the filter and search query
-    const products = await Product.find({
+    // Find skills based on the filter and search query
+    const skills = await Skill.find({
       ...filter,
       ...searchQuery,
     })
-      .sort({ [sortBy]: sortOrder === "asc" ? 1 : -1 }) // Sort products based on sortBy and sortOrder
+      .sort({ [sortBy]: sortOrder === "asc" ? 1 : -1 }) // Sort skills based on sortBy and sortOrder
       .skip((page - 1) * limit) // Skip documents based on pagination
       .limit(limit); // Limit the number of documents returned per page
 
-    // Get the total count of products matching the filter and search query
-    const foundCount = await Product.countDocuments({
+    // Get the total count of skills matching the filter and search query
+    const count = await Skill.countDocuments({
       ...filter,
       ...searchQuery,
     });
 
-    // Get the count of found products
-    const totalCount = await Product.countDocuments();
-
-    // Get the count of total active products
-    const activeCount = await Product.countDocuments({ status: "active" });
+    // Get the count of found skills
+    const totalCount = await Skill.countDocuments();
+    // Get the count of found skills
+    const activeCount = await Skill.countDocuments({ status: "active" });
 
     return NextResponse.json({
       success: true,
-      foundCount,
       activeCount,
+      totalCount,
+      count,
       currentPage: page,
-      totalActivePages: Math.ceil(activeCount / limit),
-      data: products,
+      limit: limit,
+      totalPages: Math.ceil(count / limit),
+      data: skills,
     });
   } catch (error) {
     return errorHandler(error, req);

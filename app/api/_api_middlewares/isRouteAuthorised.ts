@@ -3,6 +3,7 @@ import { headers, cookies } from "next/headers";
 import { ApiError } from "next/dist/server/api-utils";
 import { decrypt, encrypt, sendCookie } from "../_api_auth/auth";
 import errorHandler from "../_api_lib/helpers/errorHandler";
+import { customLogger } from "@/lib/frontend_lib/helpers/logger";
 
 export async function isRouteAuthorised(req: NextRequest, res: NextResponse) {
   try {
@@ -30,8 +31,8 @@ export async function isRouteAuthorised(req: NextRequest, res: NextResponse) {
 
     const jwtPayload = await decrypt(token);
     const userData = { ...jwtPayload.data };
-    console.log("jwtPayload", jwtPayload);
-    console.log("userData", userData);
+    // console.log("jwtPayload", jwtPayload);
+    // console.log("userData", userData);
     if (!userData) {
       throw new ApiError(
         401,
@@ -43,10 +44,11 @@ export async function isRouteAuthorised(req: NextRequest, res: NextResponse) {
       throw new ApiError(403, "You are not allowed to perform this action");
     }
 
-    console.log("userDATA", userData);
+    customLogger("userDATA");
+    customLogger(userData);
     const expires = new Date(Date.now() + 24 * 60 * 60 * 7 * 1000);
     const session = await encrypt({ data: userData, expires });
-    console.log("SESSESION", session);
+    // console.log("SESSESION", session);
     res.cookies.set("session", session, { expires, httpOnly: true });
     const clonedRequest = req.clone();
     clonedRequest.headers.append("userId", userData._id);

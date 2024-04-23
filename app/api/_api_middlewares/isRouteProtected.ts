@@ -38,7 +38,7 @@ export async function isRouteProtected(req: NextRequest, res: NextResponse) {
       );
     }
 
-    console.log("userDATA", userData);
+    // console.log("userDATA", userData);
     const expires = new Date(Date.now() + 24 * 60 * 60 * 7 * 1000);
     const session = await encrypt({ data: userData, expires });
     console.log("SESSESION", session);

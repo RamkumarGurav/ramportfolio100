@@ -16,9 +16,9 @@ export async function GET(req: NextRequest) {
     const page = parseInt(searchParams.get("page") || "1", 10);
     const limit = parseInt(searchParams.get("limit") || "10", 10);
     const search = searchParams.get("search") || "";
-    const sortBy = searchParams.get("sortBy") || "createdAt";
+    const sortBy = searchParams.get("sortBy") || "position";
     // logger(sortBy);
-    const sortOrder = searchParams.get("sortOrder") || "desc";
+    const sortOrder = searchParams.get("sortOrder") || "asc";
 
     // Construct the filter object based on the status parameter
     const filter = { status: "active" };
