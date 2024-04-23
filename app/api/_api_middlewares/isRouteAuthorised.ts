@@ -22,41 +22,34 @@ export async function isRouteAuthorised(req: NextRequest, res: NextResponse) {
     }
 
     if (!token) {
-      //if there is no token in the req,  means user is not logged in and error is generated
-      throw new ApiError(
-        401,
-        "You are not logged in! Please login to get access"
-      );
+      return NextResponse.redirect(new URL("/auth/login", req.nextUrl));
     }
 
     const jwtPayload = await decrypt(token);
     const userData = { ...jwtPayload.data };
-    // console.log("jwtPayload", jwtPayload);
-    // console.log("userData", userData);
+
     if (!userData) {
-      throw new ApiError(
-        401,
-        "The user belonging to this token no longer exists"
-      );
+      return NextResponse.redirect(new URL("/auth/login", req.nextUrl));
     }
 
     if (userData.role != "admin") {
-      throw new ApiError(403, "You are not allowed to perform this action");
+      return NextResponse.redirect(new URL("/auth/login", req.nextUrl));
     }
 
-    customLogger("userDATA");
-    customLogger(userData);
+    // customLogger("userDATA");
+    // customLogger(userData);
     const expires = new Date(Date.now() + 24 * 60 * 60 * 7 * 1000);
     const session = await encrypt({ data: userData, expires });
-    // console.log("SESSESION", session);
+
     res.cookies.set("session", session, { expires, httpOnly: true });
     const clonedRequest = req.clone();
     clonedRequest.headers.append("userId", userData._id);
+
     // set cookies on cloned request so they are available with cookies() on first load
     const response = NextResponse.rewrite(req.nextUrl.toString(), {
       request: clonedRequest,
     });
-    return response;
+    return res;
   } catch (error) {
     return errorHandler(error, req);
   }

@@ -4,7 +4,7 @@ import { ApiError } from "next/dist/server/api-utils";
 import { decrypt, encrypt, sendCookie } from "../_api_auth/auth";
 import errorHandler from "../_api_lib/helpers/errorHandler";
 
-export async function isRouteProtected(req: NextRequest, res: NextResponse) {
+export async function isLoggedIn(req: NextRequest, res: NextResponse) {
   try {
     const headersList = headers();
     const cookieStore = cookies();
@@ -42,16 +42,10 @@ export async function isRouteProtected(req: NextRequest, res: NextResponse) {
     const expires = new Date(Date.now() + 24 * 60 * 60 * 7 * 1000);
     const session = await encrypt({ data: userData, expires });
 
+
     res.cookies.set("session", session, { expires, httpOnly: true });
-
-    const clonedRequest = req.clone();
-    clonedRequest.headers.append("userId", userData._id);
-
-    // set cookies on cloned request so they are available with cookies() on first load
-    const response = NextResponse.rewrite(req.nextUrl.toString(), {
-      request: clonedRequest,
-    });
-    return response;
+    res.headers.set("userId", userData.id);
+    return res;
   } catch (error) {
     return errorHandler(error, req);
   }

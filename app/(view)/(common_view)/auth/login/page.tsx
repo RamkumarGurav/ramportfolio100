@@ -9,18 +9,50 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
+const doLogin = async (data: any) => {
+  const res = await fetch("/api/v1/auth/login", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+  });
+
+  return await res.json();
+};
 
 export default function PageName() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-
+  const router = useRouter();
   const {
     handleSubmit,
     register,
     reset,
     formState: { errors, isSubmitting, isDirty, isValid },
   } = useForm({ mode: "onChange" });
+
   const onSubmit = async (data: any) => {
     setIsSubmitted(true);
+    try {
+      const response = await doLogin(data);
+      if (response.success) {
+        setIsSubmitted(false);
+        toast.success("Successfully logged in");
+        router.push("/dashboard");
+      } else {
+        setIsSubmitted(false);
+        toast.error(response.message);
+      }
+
+      reset();
+    } catch (error) {
+      toast.error("Error while logging in.");
+      console.error("Error while logging in.", error);
+    }
   };
   return (
     <div className="min-h-screen bg-gray-300 flex flex-col justify-center py-6 sm:px-6 lg:px-8">
