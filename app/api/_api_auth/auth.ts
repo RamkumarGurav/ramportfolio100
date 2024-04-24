@@ -18,7 +18,12 @@ export async function sendCookie(data: any, seconds: number) {
     const session = await encrypt({ data: data, expires });
 
     // Save the session in a cookie
-    cookies().set("session", session, { expires, httpOnly: true });
+    cookies().set("session", session, {
+      expires,
+      httpOnly: true,
+      sameSite: true,
+      path: "/",
+    });
     // logger("solid cookie");
   }
 }

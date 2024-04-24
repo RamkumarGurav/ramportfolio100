@@ -42,7 +42,7 @@ export default function PageName() {
       if (response.success) {
         setIsSubmitted(false);
         toast.success("Successfully logged in");
-        router.push("/dashboard");
+        router.push("/secure-region/dashboard");
       } else {
         setIsSubmitted(false);
         toast.error(response.message);
@@ -50,6 +50,7 @@ export default function PageName() {
 
       reset();
     } catch (error) {
+      setIsSubmitted(false);
       toast.error("Error while logging in.");
       console.error("Error while logging in.", error);
     }

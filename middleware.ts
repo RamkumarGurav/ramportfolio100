@@ -9,56 +9,17 @@ import {
   publicRoutes,
 } from "./app/api/_api_auth/routes";
 
-// // Export middleware functions and their corresponding matchers
-// export default async function middleware(req: NextRequest) {
-//   try {
-//     const url = req.nextUrl;
-//     const { pathname } = url;
-//     const method = req.method;
-//     const res = NextResponse.next();
-
-//     if (pathname.includes("/protected")) {
-//       return await isRouteProtected(req, res);
-//     } else if (pathname.includes("/authorised")) {
-//       return await isRouteAuthorised(req, res);
-//     } else {
-//       return res;
-//     }
-//   } catch (error) {
-//     return errorHandler(error, req);
-//   }
-// }
-
-// Export middleware functions and their corresponding matchers
 export default async function middleware(req: NextRequest) {
   try {
-    const { nextUrl } = req;
     const { pathname } = req.nextUrl;
-    const method = req.method;
     const res = NextResponse.next();
 
-    // const isLoggedIn = true;
-
-    const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
-    const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
-    const isAuthRoute = authRoutes.includes(nextUrl.pathname);
-
-    // if (isApiAuthRoute) {
-    //   return null;
-    // }
-
-    // if (isAuthRoute) {
-    //   if (isLoggedIn) {
-    //     return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-    //   }
-    //   return null;
-    // }
-
-    // if (!isLoggedIn && isPublicRoute) {
-    //   return NextResponse.redirect(new URL("/auth/login", nextUrl));
-    // }
-
-    if (pathname.startsWith("/dashboard")) {
+    if (
+      pathname.startsWith("/secure-region") ||
+      pathname.startsWith("/api/v1/projects/authorised") ||
+      pathname.startsWith("/api/v1/skills/authorised") ||
+      pathname.startsWith("/api/v1/job-applications/authorised")
+    ) {
       return await isRouteAuthorised(req, res);
     } else {
       return res;
@@ -78,8 +39,35 @@ export const config = {
      */
     "/((?!_next/static|_next/image|favicon.ico).*)",
   ],
-  // matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };
+
+// // Export middleware functions and their corresponding matchers
+// export default async function middleware(req: NextRequest) {
+//   try {
+//     const url = req.nextUrl;
+//     const { pathname } = url;
+//     const method = req.method;
+//     const res = NextResponse.next();
+
+//     if (pathname.includes("/protected")) {
+//       return await isRouteProtected(req, res);
+//     } else if (pathname.includes("/authorised")) {
+//       return await isRouteAuthorised(req, res);
+//     } else {
+//       return res;
+//     }
+//   } catch (error) {
+//     return errorHandler(error, req);
+//   }
+// }
+/* =======================================================================
+        new matcher from clerk 
+   ======================================================================= */
+
+// export const config = {
+
+//   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+// };
 
 /* =======================================================================
         chained middlewares

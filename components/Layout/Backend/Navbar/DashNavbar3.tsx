@@ -7,6 +7,7 @@ import { IoLogoWebComponent } from "react-icons/io5";
 import { RiDashboard3Fill } from "react-icons/ri";
 import { AiFillProfile } from "react-icons/ai";
 import { FiMenu } from "react-icons/fi";
+import { SiOnlyoffice } from "react-icons/si";
 import { MdLogout } from "react-icons/md";
 import React, { useState, useEffect, useRef, MouseEvent } from "react";
 import VNavAccordianItem5 from "./VNavAccordianItem5";
@@ -17,42 +18,68 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import FooterBottom from "../Footer/FooterBottom";
-let navLinks = {
-  dashboard: {
-    name: "Dashboard",
-    dropDown: [
-      {
-        name: "Dashboard",
-        link: "/dashboard/admin",
-      },
-    ],
-  },
-  bio: {
-    name: "Bio",
-    dropDown: [
-      {
-        name: "Skills",
-        link: "/admin/skills",
-      },
-      {
-        name: "Projects",
-        link: "/admin/projects",
-      },
-    ],
-  },
-};
+import LoaderButtonChakra from "@/components/Buttons/LoaderButtonChakra";
+import { customLogger } from "@/lib/frontend_lib/helpers/logger";
 
 export default function DashNavbar3({
+  userData,
+  projectsRes,
+  skillsRes,
+  applicationsRes,
   children,
 }: {
+  userData: any;
+  projectsRes?: any;
+  skillsRes?: any;
+  applicationsRes?: any;
   children: React.ReactNode;
 }) {
+  let navLinks = {
+    dashboard: {
+      name: "Dashboard",
+      dropDown: [
+        {
+          name: "Dashboard",
+          link: "/secure-region/dashboard",
+        },
+      ],
+    },
+    bio: {
+      name: "Bio",
+      dropDown: [
+        {
+          name: "Skills",
+          link: "/secure-region/dashboard/skills",
+          count: skillsRes.count,
+        },
+        {
+          name: "Projects",
+          link: "/secure-region/dashboard/projects",
+          count: projectsRes.count,
+        },
+      ],
+    },
+    jobs: {
+      name: "Jobs",
+      dropDown: [
+        {
+          name: "Applications",
+          link: "/secure-region/dashboard/job-applications",
+          count:
+            typeof applicationsRes === "undefined" ? 0 : applicationsRes.count,
+        },
+      ],
+    },
+  };
   const pathName = usePathname();
+  // customLogger(projects);
+  // console.log(projects);
 
   /* =======================================================================
        USESTATES AND REFS
    ======================================================================= */
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<any>(userData);
+  const [isLogoutLoading, setIsLogoutLoading] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
   const [activeNavLinkName, setActiveNavLinkName] = useState<null | string>(
     null
@@ -133,13 +160,23 @@ export default function DashNavbar3({
   /* =======================================================================
          SETTING USER
     ======================================================================= */
-  useEffect(() => {
-    setUser({ name: "Ramkumar", email: "ramkumar@gmail" });
-  }, []);
+  // useEffect(() => {
+  //   setUser({ name: "Ramkumar", email: "ramkumar@gmail" });
+  // }, []);
   //==]
 
-  const handleLogout = () => {
+  const doLogout = async () => {
+    const res = await fetch("/api/v1/auth/logout");
+
+    return await res.json();
+  };
+  const handleLogout = async () => {
+    setIsLogoutLoading(true);
+    // setUser(null);
+    await doLogout();
     setUser(null);
+    setIsLogoutLoading(false);
+    router.push("/auth/login");
   };
 
   return (
@@ -178,7 +215,7 @@ export default function DashNavbar3({
           </div>
           <div className="p-4  ||| flex items-center gap-2  |||  border-b border-b-gray-700">
             <MdAccountCircle size={35} />
-            <p>Ramkumar</p>
+            <p>{user && user.name}</p>
           </div>
           <div className={`SIDEBAR_MENU_CONT  |||  p-4 px-2 |||  w-full  `}>
             <VNavAccordianItem5
@@ -191,6 +228,7 @@ export default function DashNavbar3({
               isOpen={activeNavLinkName === navLinks.dashboard.name}
               pathName={pathName}
             />
+
             <VNavAccordianItem5
               mainIcon={<AiFillProfile size={20} />}
               subIcon={<FaRegCircle />}
@@ -202,63 +240,13 @@ export default function DashNavbar3({
               pathName={pathName}
             />
             <VNavAccordianItem5
-              mainIcon={<AiFillProfile size={20} />}
+              mainIcon={<SiOnlyoffice size={20} />}
               subIcon={<FaRegCircle />}
               isAccordian={true}
-              title={navLinks.bio.name}
-              subLinks={navLinks.bio.dropDown}
-              onClick={() => handlePanelClick(navLinks.bio.name)}
-              isOpen={activeNavLinkName === navLinks.bio.name}
-              pathName={pathName}
-            />
-            <VNavAccordianItem5
-              mainIcon={<AiFillProfile size={20} />}
-              subIcon={<FaRegCircle />}
-              isAccordian={true}
-              title={navLinks.bio.name}
-              subLinks={navLinks.bio.dropDown}
-              onClick={() => handlePanelClick(navLinks.bio.name)}
-              isOpen={activeNavLinkName === navLinks.bio.name}
-              pathName={pathName}
-            />
-            <VNavAccordianItem5
-              mainIcon={<AiFillProfile size={20} />}
-              subIcon={<FaRegCircle />}
-              isAccordian={true}
-              title={navLinks.bio.name}
-              subLinks={navLinks.bio.dropDown}
-              onClick={() => handlePanelClick(navLinks.bio.name)}
-              isOpen={activeNavLinkName === navLinks.bio.name}
-              pathName={pathName}
-            />
-            <VNavAccordianItem5
-              mainIcon={<AiFillProfile size={20} />}
-              subIcon={<FaRegCircle />}
-              isAccordian={true}
-              title={navLinks.bio.name}
-              subLinks={navLinks.bio.dropDown}
-              onClick={() => handlePanelClick(navLinks.bio.name)}
-              isOpen={activeNavLinkName === navLinks.bio.name}
-              pathName={pathName}
-            />
-            <VNavAccordianItem5
-              mainIcon={<AiFillProfile size={20} />}
-              subIcon={<FaRegCircle />}
-              isAccordian={true}
-              title={navLinks.bio.name}
-              subLinks={navLinks.bio.dropDown}
-              onClick={() => handlePanelClick(navLinks.bio.name)}
-              isOpen={activeNavLinkName === navLinks.bio.name}
-              pathName={pathName}
-            />
-            <VNavAccordianItem5
-              mainIcon={<AiFillProfile size={20} />}
-              subIcon={<FaRegCircle />}
-              isAccordian={true}
-              title={navLinks.bio.name}
-              subLinks={navLinks.bio.dropDown}
-              onClick={() => handlePanelClick(navLinks.bio.name)}
-              isOpen={activeNavLinkName === navLinks.bio.name}
+              title={navLinks.jobs.name}
+              subLinks={navLinks.jobs.dropDown}
+              onClick={() => handlePanelClick(navLinks.jobs.name)}
+              isOpen={activeNavLinkName === navLinks.jobs.name}
               pathName={pathName}
             />
           </div>
@@ -285,15 +273,29 @@ export default function DashNavbar3({
               <Link href="/admin/dashboard">Home</Link>
               <Link href="/admin/dashboard">Contact</Link>
               {user ? (
-                <Button
-                  variant="secondary"
-                  className={`!bg-xblue text-white !font-thin hover:!bg-blue-700`}
-                  size="sm"
+                <LoaderButtonChakra
+                  className="!min-w-[100px] hover:!bg-blue-500"
+                  type="submit"
+                  bg="blue"
+                  textColor="white"
+                  fontWeight="500"
+                  _hover={{ bg: "black" }}
+                  isLoading={isLogoutLoading}
+                  loadingText="logout"
                   onClick={handleLogout}
+                  // isDisabled={!isDirty || !isValid}
                 >
-                  Logout
-                </Button>
+                  logout
+                </LoaderButtonChakra>
               ) : (
+                // <Button
+                //   variant="secondary"
+                //   className={`!bg-xblue text-white !font-thin hover:!bg-blue-700`}
+                //   size="sm"
+                //
+                // >
+                //   Logout
+                // </Button>
                 <Button
                   variant="secondary"
                   className={`!bg-xblue text-white !font-thin hover:!bg-blue-700`}

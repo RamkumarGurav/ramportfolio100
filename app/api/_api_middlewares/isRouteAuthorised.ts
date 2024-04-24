@@ -44,14 +44,14 @@ export async function isRouteAuthorised(req: NextRequest, res: NextResponse) {
     res.cookies.set("session", session, { expires, httpOnly: true });
     const clonedRequest = req.clone();
     clonedRequest.headers.append("userId", userData._id);
-    clonedRequest.headers.append("userData", JSON.stringify(userData));
+    clonedRequest.headers.append("x-user-data", JSON.stringify(userData));
     // clonedRequest.user = userData;
 
     // set cookies on cloned request so they are available with cookies() on first load
     const response = NextResponse.rewrite(req.nextUrl.toString(), {
       request: clonedRequest,
     });
-    return res;
+    return response;
   } catch (error) {
     return errorHandler(error, req);
   }

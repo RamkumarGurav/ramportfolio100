@@ -35,6 +35,7 @@ export async function POST(req: NextRequest) {
       name: user.name,
       role: user.role,
     };
+
     await sendCookie(userData, 7 * 24 * 60 * 60);
 
     return NextResponse.json(

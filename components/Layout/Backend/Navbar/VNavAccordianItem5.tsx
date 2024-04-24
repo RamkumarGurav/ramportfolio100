@@ -41,7 +41,7 @@ export default function VNavAccordianItem5({
         <>
           <div
             className={`group ||| accordianTitleContainer   ||| 
-             w-full  ||| cursor-pointer  ||| p-2 px-4   mb-1 rounded 
+             w-full  ||| cursor-pointer  ||| p-[6px] px-4   mb-1 rounded 
              ||| relative flex justify-between items-center 
 
              
@@ -96,7 +96,7 @@ export default function VNavAccordianItem5({
                     return (
                       <Link
                         href={item.link}
-                        className={` p-2 px-4
+                        className={` p-[6px] px-4
                         ${
                           isActive == item.link
                             ? "bg-xlight text-xgray"
@@ -109,6 +109,13 @@ export default function VNavAccordianItem5({
                       >
                         {subIcon && <span className={`mr-2`}>{subIcon}</span>}
                         <span>{item.name}</span>
+                        {item.count && (
+                          <span
+                            className={`bg-xinfo text-sm text-white px-1 rounded-xl ml-auto`}
+                          >
+                            {item.count}
+                          </span>
+                        )}
                       </Link>
                     );
                   })}
@@ -121,7 +128,7 @@ export default function VNavAccordianItem5({
         <Link
           href={titleLink}
           className={`block  |||   font-semibold  select-none   font-sans  
-          ||| w-full p-2 mb-2 rounded |||  hover:bg-yellow-500 hover:text-gray-900 `}
+          ||| w-full p-[6px] mb-2 rounded |||  hover:bg-yellow-500 hover:text-gray-900 `}
         >
           {mainIcon && <span className={`mr-2`}>{mainIcon}</span>}
           <span>{title}</span>

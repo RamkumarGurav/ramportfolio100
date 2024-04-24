@@ -18,6 +18,7 @@ const config: Config = {
         color7: "var(--color7)",
         color8: "var(--color8)",
         xblue: "var(--xblue)",
+        xinfo: "var(--xinfo)",
         xpurple: "var(--xpurple)",
         xindigo: "var(--xindigo)",
         xred: "var(--xred)",
