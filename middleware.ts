@@ -37,7 +37,7 @@ export default async function middleware(req: NextRequest) {
     const method = req.method;
     const res = NextResponse.next();
 
-    const isLoggedIn = true;
+    // const isLoggedIn = true;
 
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
     const isPublicRoute = publicRoutes.includes(nextUrl.pathname);

@@ -15,6 +15,7 @@ import { Avatar, Button, Divider } from "@chakra-ui/react";
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import FooterBottom from "../Footer/FooterBottom";
 let navLinks = {
   dashboard: {
@@ -58,6 +59,8 @@ export default function DashNavbar3({
   );
   const [isSticky, setIsSticky] = useState(false);
   const mainNavBarRef = useRef<HTMLDivElement>(null);
+
+  const router = useRouter();
   //==]
 
   /* =======================================================================
