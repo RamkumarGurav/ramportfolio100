@@ -1,32 +1,29 @@
 import AnimatedDiv from "@/components/AnimatetShells/AnimatedDiv";
 import Heading1 from "@/components/Headings/Heading1";
 import { springAnimate100perFromBelow10 } from "@/lib/frontend_lib/fm_variants/variants";
-import { cookies } from "next/headers";
 
-type Props = {
-  name: string;
-  percentage: number;
-};
+// type Props = {
+//   name: string;
+//   percentage: number;
+// };
 
-let skills: Props[] = [
-  { name: "HTML", percentage: 100 },
-  { name: "CSS", percentage: 90 },
-  { name: "Javascript", percentage: 90 },
-  { name: "Typescript", percentage: 90 },
-  { name: "Nodejs", percentage: 90 },
-  { name: "Reactjs", percentage: 90 },
-  { name: "Nextjs Framework", percentage: 80 },
-  { name: "Nestjs Framework", percentage: 60 },
-  { name: "PHP", percentage: 80 },
-  { name: "Codeigniter Framework", percentage: 80 },
-  { name: "MySQL", percentage: 80 },
-  { name: "MongoDB", percentage: 90 },
-  { name: "Git & GitHub", percentage: 90 },
-];
+// let skills: Props[] = [
+//   { name: "HTML", percentage: 100 },
+//   { name: "CSS", percentage: 90 },
+//   { name: "Javascript", percentage: 90 },
+//   { name: "Typescript", percentage: 90 },
+//   { name: "Nodejs", percentage: 90 },
+//   { name: "Reactjs", percentage: 90 },
+//   { name: "Nextjs Framework", percentage: 80 },
+//   { name: "Nestjs Framework", percentage: 60 },
+//   { name: "PHP", percentage: 80 },
+//   { name: "Codeigniter Framework", percentage: 80 },
+//   { name: "MySQL", percentage: 80 },
+//   { name: "MongoDB", percentage: 90 },
+//   { name: "Git & GitHub", percentage: 90 },
+// ];
 
-export default function ({ skillsRes }: { skillsRes: any }) {
-  // const skillsRes = await fetchData("api/v1/skills/public");
-  // console.log(skillsRes);
+export default function Skills({ skillsRes }: { skillsRes: any }) {
   return (
     <section
       id="skills"

@@ -71,15 +71,18 @@ const AboutMe = () => {
                   BE in Electronics and Communication Engineering(ECE) ,from JSS
                   Academy of Technical Education Bengaluru 560060.
                   <br />
-                  <span className="text-color1 font-semibold"> cgpa: 8.02</span>
+                  <span className="!text-color1 font-semibold">
+                    {" "}
+                    cgpa: 8.02
+                  </span>
                 </li>
                 <li className="text-base leading-8">
                   {/* <span className="!text-color1 font-semibold">2015</span> */}
                   {/* <br /> */}
                   PUC from Tungal PU Composite College JamaKhandi.
                   <br />
-                  <span className="text-color1 font-semibold">
-                    percentage: 86%
+                  <span className="!text-color1 font-semibold">
+                    percentage: 88%
                   </span>
                 </li>
                 <li className="text-base leading-8">
@@ -87,7 +90,7 @@ const AboutMe = () => {
                   {/* <br /> */}
                   10th Standard from GHS Kunchanur.
                   <br />
-                  <span className="text-color1 font-semibold">
+                  <span className="!text-color1 font-semibold">
                     percentage: 93.7%
                   </span>
                 </li>

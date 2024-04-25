@@ -6,6 +6,13 @@ import Projects from "./Projects";
 import Services from "./Services";
 import Skills from "./Skills";
 
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Ramkumar Gurav",
+  description:
+    "Welcome to Ramkumar's portfolio. Explore my projects, skills, and experience.",
+};
+
 export const dynamic = "force-dynamic";
 
 async function fetchData(path: string) {

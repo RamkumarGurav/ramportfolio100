@@ -1,5 +1,4 @@
 "use client";
-import FooterBottom from "@/components/Footer/FooterBottom";
 import { MdAccountCircle } from "react-icons/md";
 import { IoLogoVercel } from "react-icons/io5";
 import { FaRegCircle } from "react-icons/fa";
@@ -16,6 +15,7 @@ import { Avatar, Button, Divider } from "@chakra-ui/react";
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import FooterBottom from "../../Backend/Footer/FooterBottom";
 let navLinks = {
   dashboard: {
     name: "Dashboard",

@@ -10,27 +10,23 @@ import {
 } from "./app/api/_api_auth/routes";
 
 export default async function middleware(req: NextRequest) {
-  try {
-    const { pathname } = req.nextUrl;
-    // Clone the request headers
-    // ADDING BASEURL TO EVERY INCOMING REQUEST HEADER
-    const requestHeaders = new Headers(req.headers);
-    requestHeaders.set("x-base-url", req.url);
+  const { pathname } = req.nextUrl;
+  // Clone the request headers
+  // ADDING BASEURL TO EVERY INCOMING REQUEST HEADER
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.set("x-base-url", req.url);
 
-    const res = NextResponse.next({ request: { headers: requestHeaders } });
+  const res = NextResponse.next({ request: { headers: requestHeaders } });
 
-    if (
-      pathname.startsWith("/secure-region") ||
-      pathname.startsWith("/api/v1/projects/authorised") ||
-      pathname.startsWith("/api/v1/skills/authorised") ||
-      pathname.startsWith("/api/v1/job-applications/authorised")
-    ) {
-      return await isRouteAuthorised(req, res);
-    } else {
-      return res;
-    }
-  } catch (error) {
-    return errorHandler(error, req);
+  if (
+    pathname.startsWith("/secure-region") ||
+    pathname.startsWith("/api/v1/projects/authorised") ||
+    pathname.startsWith("/api/v1/skills/authorised") ||
+    pathname.startsWith("/api/v1/job-applications/authorised")
+  ) {
+    return await isRouteAuthorised(req, res);
+  } else {
+    return res;
   }
 }
 export const config = {
