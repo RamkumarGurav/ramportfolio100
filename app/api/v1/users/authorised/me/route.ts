@@ -6,6 +6,7 @@ import errorHandler from "@/app/api/_api_lib/helpers/errorHandler";
 import User from "@/app/api/_api_models/userModel";
 import { headers } from "next/headers";
 
+export const dynamic = "force-dynamic";
 /* =======================================================================
         GET - ME
    ======================================================================= */

@@ -3,6 +3,8 @@ import errorHandler from "@/app/api/_api_lib/helpers/errorHandler";
 import Project from "@/app/api/_api_models/projectModel";
 import { type NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 /* =======================================================================
     GET ALL WITH PAGINATION
  ======================================================================= */

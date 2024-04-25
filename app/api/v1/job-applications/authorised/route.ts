@@ -4,6 +4,8 @@ import Application from "@/app/api/_api_models/applicationModel";
 import { ApiError } from "next/dist/server/api-utils";
 import { type NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 /* =======================================================================
             CREATE APPLICATION
    ======================================================================= */

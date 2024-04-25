@@ -1,6 +1,7 @@
 import { Badge } from "@chakra-ui/react";
-import { cookies } from "next/headers";
-import Link from "next/link";
+import { cookies, headers } from "next/headers";
+
+export const dynamic = "force-dynamic";
 
 /* =======================================================================
   to fetch data from protected routes always attach the required 
@@ -10,18 +11,24 @@ import Link from "next/link";
           )
      ======================================================================= */
 async function fetchData(path: string) {
-  console.log(`${process.env.NEXT_PUBLIC_BE_BASE_URL}${path}`);
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BE_BASE_URL}${path}`, {
+  const res = await fetch(path, {
     method: "GET",
     headers: { Cookie: cookies().toString() },
     credentials: "include", // Ensure cookies are sent in the request
   });
 
-  if (!res.ok) return null;
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
   return await res.json();
 }
+
 export default async function Skills() {
-  const projectsRes = await fetchData("api/v1/projects/authorised");
+  const headersList = headers();
+  const baseUrl = headersList.get("x-base-url"); // to get url
+
+  const projectsRes = await fetchData(`${baseUrl}api/v1/projects/authorised`);
   return (
     <div>
       <section className="py-1 bg-blueGray-50 ">

@@ -7,6 +7,7 @@ import Services from "./Services";
 import Skills from "./Skills";
 
 import { Metadata } from "next";
+
 export const metadata: Metadata = {
   title: "Ramkumar Gurav",
   description:
@@ -18,7 +19,10 @@ export const dynamic = "force-dynamic";
 async function fetchData(path: string) {
   const res = await fetch(path);
 
-  if (!res.ok) return null;
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
   return await res.json();
 }
 export default async function PageName() {
@@ -27,14 +31,20 @@ export default async function PageName() {
 
   const skillsRes = await fetchData(`${baseUrl}api/v1/skills/public`);
   const projectsRes = await fetchData(`${baseUrl}api/v1/projects/public`);
-  // console.log(projectsRes);
+  console.log(projectsRes && projectsRes.count);
   return (
     <div className={`bg-black`}>
       <Header />
       <AboutMe />
-      <Skills skillsRes={skillsRes} />
+      <p className="text-4xl text-white">
+        Skills count :{skillsRes.count && skillsRes.count}
+      </p>
+      <p className="text-4xl text-white">
+        projectsRes count :{projectsRes.count && projectsRes.count}
+      </p>
+      {/* <Skills skillsRes={skillsRes} /> */}
       <Services />
-      <Projects projectsRes={projectsRes} />
+      {/* <Projects projectsRes={projectsRes} /> */}
       <ContactMe />
     </div>
   );

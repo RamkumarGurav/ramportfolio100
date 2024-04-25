@@ -50,12 +50,10 @@ export default function DashNavbar3({
         {
           name: "Skills",
           link: "/secure-region/dashboard/skills",
-          count: skillsRes.count,
         },
         {
           name: "Projects",
           link: "/secure-region/dashboard/projects",
-          count: projectsRes.count,
         },
       ],
     },
@@ -65,8 +63,6 @@ export default function DashNavbar3({
         {
           name: "Applications",
           link: "/secure-region/dashboard/job-applications",
-          count:
-            typeof applicationsRes === "undefined" ? 0 : applicationsRes.count,
         },
       ],
     },

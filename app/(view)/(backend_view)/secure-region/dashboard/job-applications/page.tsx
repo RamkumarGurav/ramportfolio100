@@ -1,8 +1,11 @@
 import { Badge } from "@chakra-ui/react";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import Link from "next/link";
 import { FaCheckCircle } from "react-icons/fa";
 import { FcCancel } from "react-icons/fc";
+
+export const dynamic = "force-dynamic";
+
 /* =======================================================================
   to fetch data from protected routes always attach the required 
   cookies that are stored in the browser(when you make a request to protected
@@ -11,18 +14,25 @@ import { FcCancel } from "react-icons/fc";
           )
      ======================================================================= */
 async function fetchData(path: string) {
-  console.log(`${process.env.NEXT_PUBLIC_BE_BASE_URL}${path}`);
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BE_BASE_URL}${path}`, {
+  const res = await fetch(path, {
     method: "GET",
     headers: { Cookie: cookies().toString() },
     credentials: "include", // Ensure cookies are sent in the request
   });
 
-  if (!res.ok) return null;
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
   return await res.json();
 }
 export default async function JobApplications() {
-  const applicationsRes = await fetchData("api/v1/job-applications/authorised");
+  const headersList = headers();
+  const baseUrl = headersList.get("x-base-url"); // to get url
+
+  const applicationsRes = await fetchData(
+    `${baseUrl}api/v1/job-applications/authorised`
+  );
   return (
     <div>
       <section className="py-1 bg-blueGray-50 ">

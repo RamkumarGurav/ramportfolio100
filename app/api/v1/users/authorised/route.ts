@@ -4,6 +4,8 @@ import User from "@/app/api/_api_models/userModel";
 import { ApiError } from "next/dist/server/api-utils";
 import { type NextRequest, NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 /* =======================================================================
           GET ALL WITH PAGINATION
      ======================================================================= */

@@ -116,7 +116,7 @@ const Projects = ({ projectsRes }: { projectsRes: any }) => {
           className="rounded-md my-4 mx-10 py-4 pl-4 mt-10 text-xl font-semibold nunito uppercase
           sm:text-[30px] text-white bg-[#131111]"
         >
-          {projectsRes.count} Web Applications <br />
+          {projectsRes?.count} Web Applications <br />
         </AnimatedTitle>
         <AnimatedText
           variants={springAnimate70pxFromLeft10}
@@ -131,7 +131,7 @@ const Projects = ({ projectsRes }: { projectsRes: any }) => {
         </AnimatedText>
         <section className="mb-20">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-10 py-4 place-content-center place-items-center">
-            {projectsRes.data.map((app: any, i: number) => (
+            {projectsRes?.data.map((app: any, i: number) => (
               <AnimatedDiv
                 variants={springAnimate70pxFromBelow10}
                 initial={"offscreen"}

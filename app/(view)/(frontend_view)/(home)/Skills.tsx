@@ -32,7 +32,7 @@ export default function Skills({ skillsRes }: { skillsRes: any }) {
       <div className={` sm:px-4 mx-auto `}>
         <Heading1 first="My" second="Skills" />
         <div className="pt-4 grid grid-cols-3  lg:grid-cols-4 gap-4 gap-y-10 place-items-center">
-          {skillsRes.data.map((item: any, i: number) => (
+          {skillsRes?.data.map((item: any, i: number) => (
             <AnimatedDiv
               variants={springAnimate100perFromBelow10}
               initial={"offscreen"}

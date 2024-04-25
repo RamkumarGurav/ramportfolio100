@@ -134,20 +134,15 @@ const ContactMe = () => {
                 <BsFacebook size={25} />
               </Link>
             </motion.div>
-            {/* <a href="images/ramcircle.png" download className="btn btn2">
-              Download CV
-            </a> */}
           </div>
           <div className=" contact-right">
             <form onSubmit={handleSubmit(onSubmit)} className="text-gray-900">
-              {" "}
-              <motion.div
+              {/* <motion.div
                 variants={tweenAnimateFromRight10}
                 initial={"offscreen"}
                 whileInView={"onscreen"}
                 viewport={{ once: true, amount: 0 }}
               >
-                {" "}
                 <FormControl isInvalid={!!errors.name} mb={1} isRequired>
                   {" "}
                   <Input
@@ -170,13 +165,12 @@ const ContactMe = () => {
                         message: "Name must be at least 2 characters",
                       },
                     })}
-                  />{" "}
+                  />
                   <FormErrorMessage>
-                    {" "}
                     {errors.name && String(errors.name.message)}{" "}
                   </FormErrorMessage>{" "}
-                </FormControl>{" "}
-              </motion.div>{" "}
+                </FormControl>
+              </motion.div>
               <motion.div
                 variants={tweenAnimateFromRight13}
                 initial={"offscreen"}
@@ -321,7 +315,7 @@ const ContactMe = () => {
                 >
                   Send{" "}
                 </LoaderButtonChakra>{" "}
-              </motion.div>{" "}
+              </motion.div>{" "} */}
             </form>
           </div>
         </div>
