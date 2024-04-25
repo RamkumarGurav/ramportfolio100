@@ -13,7 +13,7 @@ export default function Error({ error, reset }: any) {
   }, [error]);
   return (
     <div
-      className={`min-h-[90vh] pt-[50px] flex justify-center ${font.className}`}
+      className={`min-h-[90vh] pt-[50px] flex justify-center bg-white ${font.className}`}
     >
       <div
         className="p-3 m-3  |||  text-xl font-bold text-center  ||| 

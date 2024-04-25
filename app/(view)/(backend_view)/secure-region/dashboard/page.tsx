@@ -40,12 +40,13 @@ async function fetchData(path: string) {
 }
 export default async function PageName() {
   const headersList = headers();
-  const baseUrl = headersList.get("x-base-url"); // to get url
+  // const baseUrl = headersList.get("x-base-url"); // to get url
+  const baseUrl = process.env.NEXT_PUBLIC_URL; // to get url
 
-  const skillsRes = await fetchData(`${baseUrl}api/v1/skills/authorised`);
-  const projectsRes = await fetchData(`${baseUrl}api/v1/projects/authorised`);
+  const skillsRes = await fetchData(`${baseUrl}/api/v1/skills/authorised`);
+  const projectsRes = await fetchData(`${baseUrl}/api/v1/projects/authorised`);
   const applicationsRes = await fetchData(
-    `${baseUrl}api/v1/job-applications/authorised`
+    `${baseUrl}/api/v1/job-applications/authorised`
   );
 
   return (

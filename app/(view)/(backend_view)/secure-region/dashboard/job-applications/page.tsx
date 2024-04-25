@@ -1,3 +1,4 @@
+import { getBaseUrl2 } from "@/lib/frontend_lib/helpers/getBaseUrl";
 import { Badge } from "@chakra-ui/react";
 import { cookies, headers } from "next/headers";
 import Link from "next/link";
@@ -27,11 +28,12 @@ async function fetchData(path: string) {
   return await res.json();
 }
 export default async function JobApplications() {
-  const headersList = headers();
-  const baseUrl = headersList.get("x-base-url"); // to get url
-
+  // const headersList = headers();
+  // const baseUrl = headersList.get("x-base-url"); // to get url
+  const baseUrl = getBaseUrl2();
+  // const baseUrl = process.env.NEXT_PUBLIC_URL;
   const applicationsRes = await fetchData(
-    `${baseUrl}api/v1/job-applications/authorised`
+    `${baseUrl}/api/v1/job-applications/authorised`
   );
   return (
     <div>

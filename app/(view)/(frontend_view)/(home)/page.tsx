@@ -19,29 +19,28 @@ export const dynamic = "force-dynamic";
 async function fetchData(path: string) {
   const res = await fetch(path);
 
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
   return await res.json();
 }
 export default async function PageName() {
-  const headersList = headers();
-  const baseUrl = headersList.get("x-base-url"); // to get url
+  // const headersList = headers();
+  // const baseUrl = headersList.get("x-base-url"); // to get url
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
-  const skillsRes = await fetchData(`${baseUrl}api/v1/skills/public`);
-  const projectsRes = await fetchData(`${baseUrl}api/v1/projects/public`);
-  console.log(projectsRes && projectsRes.count);
+  const skillsRes = await fetchData(`${baseUrl}/api/v1/skills/public`);
+  // const projectsRes = await fetchData(`${baseUrl}/api/v1/projects/public`);
+  // console.log(projectsRes && projectsRes.count);
   return (
     <div className={`bg-black`}>
       <Header />
       <AboutMe />
       <p className="text-4xl text-white">
-        Skills count :{skillsRes.count && skillsRes.count}
+        Skills count :
+        {baseUrl ? `${baseUrl}/api/v1/skills/public` : "no base url"}
       </p>
       <p className="text-4xl text-white">
-        projectsRes count :{projectsRes.count && projectsRes.count}
+        {skillsRes ? skillsRes.count : "no count"}
       </p>
+
       {/* <Skills skillsRes={skillsRes} /> */}
       <Services />
       {/* <Projects projectsRes={projectsRes} /> */}

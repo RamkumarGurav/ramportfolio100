@@ -29,11 +29,12 @@ export default async function Skills() {
   const headersList = headers();
   const baseUrl = headersList.get("x-base-url"); // to get url
 
-  const skillsRes = await fetchData(`${baseUrl}api/v1/skills/authorised`);
+  // const skillsRes = await fetchData(`${baseUrl}api/v1/skills/authorised`);
   return (
     <div>
       <section className="py-1 bg-blueGray-50 ">
-        <div className="w-full    rounded-xl overflow-hidden mx-auto mt-10 border-t-blue-400 shadow-lg pb-10 bg-white border-t-4">
+        <h1>{baseUrl ? baseUrl : "no base url found"}</h1>
+        {/* <div className="w-full    rounded-xl overflow-hidden mx-auto mt-10 border-t-blue-400 shadow-lg pb-10 bg-white border-t-4">
           <div className="relative flex flex-col min-w-0 break-words w-full   rounded  ">
             <div className="rounded-t mb-0 px-4 py-3 border-0">
               <div className="flex flex-wrap items-center">
@@ -130,7 +131,7 @@ export default async function Skills() {
               </table>
             </div>
           </div>
-        </div>
+        </div> */}
       </section>
     </div>
   );
