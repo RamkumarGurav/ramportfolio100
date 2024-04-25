@@ -66,17 +66,30 @@ const AboutMe = () => {
             >
               <ul>
                 <li className="text-base leading-8">
-                  <span className="!text-color1">2019</span>
+                  {/* <span className="!text-color1">2019</span> */}
+                  {/* <br /> */}
+                  BE in Electronics and Communication Engineering(ECE) ,from JSS
+                  Academy of Technical Education Bengaluru 560060.
                   <br />
-                  BE in ECE ,from JSS Academy of Technical Education Bengaluru
-                  560060.
-                  <br />
-                  cgpa: 8.02
+                  <span className="text-color1 font-semibold"> cgpa: 8.02</span>
                 </li>
-                <li>
-                  <span className="!text-color1">2015</span>
-                  <br />
+                <li className="text-base leading-8">
+                  {/* <span className="!text-color1 font-semibold">2015</span> */}
+                  {/* <br /> */}
                   PUC from Tungal PU Composite College JamaKhandi.
+                  <br />
+                  <span className="text-color1 font-semibold">
+                    percentage: 86%
+                  </span>
+                </li>
+                <li className="text-base leading-8">
+                  {/* <span className="!text-color1 font-semibold">2015</span> */}
+                  {/* <br /> */}
+                  10th Standard from GHS Kunchanur.
+                  <br />
+                  <span className="text-color1 font-semibold">
+                    percentage: 93.7%
+                  </span>
                 </li>
               </ul>
             </AnimatedDiv>

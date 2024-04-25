@@ -48,7 +48,7 @@ export async function GET(req: NextRequest) {
     const searchParams = req.nextUrl.searchParams;
 
     const page = parseInt(searchParams.get("page") || "1", 10);
-    const limit = parseInt(searchParams.get("limit") || "10", 10);
+    const limit = parseInt(searchParams.get("limit") || "20", 10);
     const search = searchParams.get("search") || "";
     const sortBy = searchParams.get("sortBy") || "position";
     // logger(sortBy);

@@ -4,7 +4,10 @@ import Link from "next/link";
 import { GoLinkExternal } from "react-icons/go";
 import Heading1 from "@/components/Headings/Heading1";
 import AnimatedTitle from "@/components/AnimatetShells/AnimatedDiv";
-import { springAnimate70pxFromBelow10, springAnimate70pxFromLeft10 } from "@/lib/frontend_lib/fm_variants/variants";
+import {
+  springAnimate70pxFromBelow10,
+  springAnimate70pxFromLeft10,
+} from "@/lib/frontend_lib/fm_variants/variants";
 import AnimatedText from "@/components/AnimatetShells/AnimatedText";
 import AnimatedDiv from "@/components/AnimatetShells/AnimatedDiv";
 
@@ -96,7 +99,7 @@ const projects = [
   },
 ];
 
-const Projects = () => {
+const Projects = ({ projectsRes }: { projectsRes: any }) => {
   return (
     <section
       id="projects"
@@ -113,7 +116,7 @@ const Projects = () => {
           className="rounded-md my-4 mx-10 py-4 pl-4 mt-10 text-xl font-semibold nunito uppercase
           sm:text-[30px] text-white bg-[#131111]"
         >
-          {projects.length} Web Applications <br />
+          {projectsRes.count} Web Applications <br />
         </AnimatedTitle>
         <AnimatedText
           variants={springAnimate70pxFromLeft10}
@@ -128,7 +131,7 @@ const Projects = () => {
         </AnimatedText>
         <section className="mb-20">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-10 py-4 place-content-center place-items-center">
-            {projects.map((app, i) => (
+            {projectsRes.data.map((app: any, i: number) => (
               <AnimatedDiv
                 variants={springAnimate70pxFromBelow10}
                 initial={"offscreen"}
@@ -152,14 +155,14 @@ const Projects = () => {
                   className="absolute top-0 left-0  ||| cgx-primary  |||  w-full h-full  
                 |||  flex flex-col justify-center items-center gap-4 px-2"
                 >
-                  <Link href={`${app.link}`} className="text-xl text-white ">
-                    {app.name}
+                  <Link href={`${app.url}`} className="text-xl text-white ">
+                    {app.projectName}
                   </Link>
                   <p className="text-sm text-white px-2 text-center ">
-                    {app.desc}
+                    {app.description}
                   </p>
                   <Link
-                    href={`${app.link}`}
+                    href={`${app.url}`}
                     className="rounded-full p-4 bg-white"
                   >
                     <GoLinkExternal size={25} className="col-primary" />

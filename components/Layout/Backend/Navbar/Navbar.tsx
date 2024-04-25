@@ -7,7 +7,6 @@ import { HiMenu } from "react-icons/hi";
 import { CgClose } from "react-icons/cg";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { tweenAnimateFromLeft10 } from "@/utils/variants";
 
 const Header = () => {
   const [open, setOpen] = useState(false);

@@ -1,6 +1,7 @@
 import AnimatedDiv from "@/components/AnimatetShells/AnimatedDiv";
 import Heading1 from "@/components/Headings/Heading1";
 import { springAnimate100perFromBelow10 } from "@/lib/frontend_lib/fm_variants/variants";
+import { cookies } from "next/headers";
 
 type Props = {
   name: string;
@@ -23,7 +24,9 @@ let skills: Props[] = [
   { name: "Git & GitHub", percentage: 90 },
 ];
 
-const Skills = () => {
+export default function ({ skillsRes }: { skillsRes: any }) {
+  // const skillsRes = await fetchData("api/v1/skills/public");
+  // console.log(skillsRes);
   return (
     <section
       id="skills"
@@ -32,7 +35,7 @@ const Skills = () => {
       <div className={` sm:px-4 mx-auto `}>
         <Heading1 first="My" second="Skills" />
         <div className="pt-4 grid grid-cols-3  lg:grid-cols-4 gap-4 gap-y-10 place-items-center">
-          {skills.map((item, i) => (
+          {skillsRes.data.map((item: any, i: number) => (
             <AnimatedDiv
               variants={springAnimate100perFromBelow10}
               initial={"offscreen"}
@@ -52,7 +55,7 @@ const Skills = () => {
                 ></div>
                 <div className="absolute  bg-black inset-0 flex items-center text-color4 justify-center text-primary">
                   <span className="text-xs md:text-base text-center font-medium text-white">
-                    {item.name}
+                    {item.skillName}
                   </span>
                 </div>
                 <AnimatedDiv
@@ -70,6 +73,4 @@ const Skills = () => {
       </div>
     </section>
   );
-};
-
-export default Skills;
+}

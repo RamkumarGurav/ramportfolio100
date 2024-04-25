@@ -124,7 +124,7 @@ const ContactMe = () => {
               <Link href="https://github.com/RamkumarGurav">
                 <BsGithub size={25} />
               </Link>
-              <Link href="https://www.linkedin.com/in/ramkumar-gurav-645585250/">
+              <Link href="https://www.linkedin.com/in/ramkumar-gurav-447783303">
                 <AiFillLinkedin size={25} />
               </Link>
               <Link href="https://twitter.com/Raamathecoder">

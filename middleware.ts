@@ -12,7 +12,12 @@ import {
 export default async function middleware(req: NextRequest) {
   try {
     const { pathname } = req.nextUrl;
-    const res = NextResponse.next();
+    // Clone the request headers
+    // ADDING BASEURL TO EVERY INCOMING REQUEST HEADER
+    const requestHeaders = new Headers(req.headers);
+    requestHeaders.set("x-base-url", req.url);
+
+    const res = NextResponse.next({ request: { headers: requestHeaders } });
 
     if (
       pathname.startsWith("/secure-region") ||

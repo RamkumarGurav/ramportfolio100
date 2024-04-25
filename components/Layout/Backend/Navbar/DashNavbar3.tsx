@@ -73,7 +73,6 @@ export default function DashNavbar3({
   };
   const pathName = usePathname();
   // customLogger(projects);
-  // console.log(projects);
 
   /* =======================================================================
        USESTATES AND REFS

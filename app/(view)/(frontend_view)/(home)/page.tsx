@@ -1,3 +1,4 @@
+import { headers } from "next/headers";
 import AboutMe from "./AboutMe";
 import ContactMe from "./ContactMe";
 import Header from "./Header";
@@ -5,14 +6,28 @@ import Projects from "./Projects";
 import Services from "./Services";
 import Skills from "./Skills";
 
-export default function PageName() {
+export const dynamic = "force-dynamic";
+
+async function fetchData(path: string) {
+  const res = await fetch(path);
+
+  if (!res.ok) return null;
+  return await res.json();
+}
+export default async function PageName() {
+  const headersList = headers();
+  const baseUrl = headersList.get("x-base-url"); // to get url
+
+  const skillsRes = await fetchData(`${baseUrl}api/v1/skills/public`);
+  const projectsRes = await fetchData(`${baseUrl}api/v1/projects/public`);
+  // console.log(projectsRes);
   return (
     <div className={`bg-black`}>
       <Header />
       <AboutMe />
-      <Skills />
+      <Skills skillsRes={skillsRes} />
       <Services />
-      <Projects />
+      <Projects projectsRes={projectsRes} />
       <ContactMe />
     </div>
   );
